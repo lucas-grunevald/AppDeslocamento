@@ -34,13 +34,9 @@ namespace AppDeslocamento.Application.Deslocamentos.Commands
 
         public async Task<Deslocamento> Handle(IniciarDeslocamentoCommand request, CancellationToken cancellationToken)
         {
-            var repository = _unitOfWork.GetRepository<Deslocamento>();
+            var repository = _unitOfWork.GetRepository<Deslocamento>();                       
 
-            var deslocamento =  await repository
-                .FindBy(d => d.CarroId == request.CarroId && d.CondutorId == request.CondutorId && d.ClienteId == request.ClienteId && d.QuilometragemFinal == null)                
-                .FirstAsync();            
-
-            deslocamento.IniciarDeslocamento(request.CarroId, request.ClienteId, request.CondutorId, DateTime.Now.ToUniversalTime(), request.QuilometragemInicial);
+            var deslocamento = Deslocamento.IniciarDeslocamento(request.CarroId, request.ClienteId, request.CondutorId, DateTime.Now.ToUniversalTime(), request.QuilometragemInicial);
 
             repository.Add(deslocamento);
 

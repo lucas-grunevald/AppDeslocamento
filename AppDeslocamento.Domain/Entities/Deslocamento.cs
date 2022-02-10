@@ -9,7 +9,7 @@ namespace AppDeslocamento.Domain.Entities
     public class Deslocamento : BaseEntity
     {
 
-        public Deslocamento() { }
+        private Deslocamento() { }
 
         public long CarroId { get; private set; }
 
@@ -33,7 +33,7 @@ namespace AppDeslocamento.Domain.Entities
 
         public Cliente Cliente { get; private set; }
 
-        public Deslocamento IniciarDeslocamento(long carroId, long clienteId, long condutorId, DateTime dataHoraInicio, long quilometragemInicial)
+        public static Deslocamento IniciarDeslocamento(long carroId, long clienteId, long condutorId, DateTime dataHoraInicio, long quilometragemInicial)
         {
             var deslocamento = new Deslocamento();
 

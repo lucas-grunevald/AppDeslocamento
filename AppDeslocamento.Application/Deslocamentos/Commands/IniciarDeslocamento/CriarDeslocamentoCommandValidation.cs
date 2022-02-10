@@ -59,7 +59,7 @@ namespace AppDeslocamento.Application.Deslocamentos.Commands
                 .Where(p => p.CondutorId == d.CondutorId)
                 .Where(p => p.ClienteId == d.ClienteId)
                 .Where(p => p.CarroId == d.CarroId)
-                .OrderByDescending(p => p.DataHoraInicio)
+                .OrderByDescending(p => p.Id)
                 .FirstAsync();
 
             if (deslocamento != null)
