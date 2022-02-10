@@ -40,21 +40,24 @@ namespace AppDeslocamento.Application.Deslocamentos.Commands
 
         public async Task<bool> MustFindCarroById(long id, CancellationToken cancellationToken)
         {
-            return await _context.Carros.FindAsync(id, cancellationToken) != null;
+            return await _context.Carros.FindAsync(id) != null;
         }
 
         public async Task<bool> MustFindCondutorById(long id, CancellationToken cancellationToken)
         {
-            return await _context.Condutores.FindAsync(id, cancellationToken) != null;
+            return await _context.Condutores.FindAsync(id) != null;
         }
 
         public async Task<bool> MustFindClienteById(long id, CancellationToken cancellationToken)
         {
-            return await _context.Clientes.FindAsync(id, cancellationToken) != null;
+            return await _context.Clientes.FindAsync(id) != null;
         }
 
         public async Task<bool> MustBeUnique(IniciarDeslocamentoCommand d, CancellationToken cancellationToken)
         {
+            if (!_context.Deslocamentos.Any())
+                return true;
+
             var deslocamento = await _context.Deslocamentos
                 .Where(p => p.CondutorId == d.CondutorId)
                 .Where(p => p.ClienteId == d.ClienteId)
