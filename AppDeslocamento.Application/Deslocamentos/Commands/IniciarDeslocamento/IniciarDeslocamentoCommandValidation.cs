@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace AppDeslocamento.Application.Deslocamentos.Commands
 {
-    public class CriarDeslocamentoCommandValidation : AbstractValidator<IniciarDeslocamentoCommand>
+    public class IniciarDeslocamentoCommandValidation : AbstractValidator<IniciarDeslocamentoCommand>
     {
 
         private readonly ApplicationDbContext _context;
-        public CriarDeslocamentoCommandValidation(ApplicationDbContext context)
+        public IniciarDeslocamentoCommandValidation(ApplicationDbContext context)
         {
             _context = context;
 
