@@ -15,16 +15,18 @@ namespace AppDeslocamento.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAsync([FromQuery] GetCarrosQuery query)
+        public async Task<IActionResult> GetCarrosAsync([FromQuery] GetCarrosQuery query)
         {
             var result = await Mediator.Send(query);
 
             return Ok(result);
         }
 
-        [HttpGet("{carroId:long}")]
-        public async Task<IActionResult> GetAsync([FromRoute]long carroId, [FromQuery] GetCarroByIdQuery query)
+        [HttpGet("{id:long}")]
+        public async Task<IActionResult> GetCarroByIdAsync([FromRoute] long id, [FromQuery] GetCarroByIdQuery query)
         {
+            query.carroId = id;
+
             var result = await Mediator.Send(query);
 
             return Ok(result);

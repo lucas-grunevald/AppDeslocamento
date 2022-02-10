@@ -1,27 +1,42 @@
 ﻿using AppDeslocamento.Application.Deslocamentos.Commands;
+using AppDeslocamento.Application.Deslocamentos.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AppDeslocamento.WebApi.Controllers
 {
     public class DeslocamentoController : ApiController
     {
-        [HttpPost]
-        public async Task<IActionResult> PostAsync([FromBody] CriarDeslocamentoCommand command)
+        [HttpPost("iniciar-deslocamento")]
+        public async Task<IActionResult> PostIniciarDeslocamentoAsync([FromBody] IniciarDeslocamentoCommand command)
         {
-            var result = await Mediator.Send(command);
+            var result = await Mediator.Send(command);            
 
-            if (result == null)
-            {
-                return BadRequest("");
-            }
+            return Created("", result);
+        }        
 
-            return Created($"id={result.Id}", result);
+        [HttpPut("{deslocamentoId:long}/finalizar-deslocamento")]
+        public async Task<IActionResult> PutFinalizarDeslocamentoAsync([FromRoute] long deslocamentoId, [FromBody] FinalizarDeslocamentoCommand command)
+        {
+            command.Id = deslocamentoId;            
+
+            var result = await Mediator.Send(command);            
+
+            return Ok();
         }
 
-        [HttpPut("{deslocamentoId:long/finalizar-deslocamento}")]
-        public async Task<IActionResult> PutAsync([FromRoute] long deslocamentoId, [FromBody] CriarDeslocamentoCommand command)
+        [HttpGet]
+        public async Task<IActionResult> GetDeslocamentosAsync([FromQuery] GetDeslocamentosQuery query)
         {
-            var result = await Mediator.Send(command);
+            var result = await Mediator.Send(query);
+
+            return Ok(result);
+        }
+
+        [HttpGet("{id:long}")]
+        public async Task<IActionResult> GetDeslocamentoByIdAsync([FromRoute] long id, [FromQuery] GetDeslocamentoByIdQuery query)
+        {
+            query.Id = id;
+            var result = await Mediator.Send(query);
 
             return Ok(result);
         }

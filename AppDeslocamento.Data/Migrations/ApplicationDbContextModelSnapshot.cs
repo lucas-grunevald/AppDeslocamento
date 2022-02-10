@@ -108,7 +108,7 @@ namespace AppDeslocamento.Data.Migrations
                     b.Property<long>("CondutorId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("DataHoraFim")
+                    b.Property<DateTime?>("DataHoraFim")
                         .HasColumnType("datetime")
                         .HasColumnName("DataHoraFim");
 
@@ -121,7 +121,7 @@ namespace AppDeslocamento.Data.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Observacao");
 
-                    b.Property<long>("QuilometragemFinal")
+                    b.Property<long?>("QuilometragemFinal")
                         .HasColumnType("bigint")
                         .HasColumnName("QuilometragemFinal");
 

@@ -63,8 +63,8 @@ namespace AppDeslocamento.Data.Migrations
                     DataHoraInicio = table.Column<DateTime>(type: "datetime", nullable: false),
                     QuilometragemInicial = table.Column<long>(type: "bigint", nullable: false),
                     Observacao = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DataHoraFim = table.Column<DateTime>(type: "datetime", nullable: false),
-                    QuilometragemFinal = table.Column<long>(type: "bigint", nullable: false)
+                    DataHoraFim = table.Column<DateTime>(type: "datetime", nullable: true),
+                    QuilometragemFinal = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {

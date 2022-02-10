@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.6" />
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
   </ItemGroup>
@@ -14,10 +15,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AppDeslocamento.Data\AppDeslocamento.Data.csproj" />
     <ProjectReference Include="..\AppDeslocamento.Domain\AppDeslocamento.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Deslocamentos\Queries\" />
   </ItemGroup>
 
 </Project>

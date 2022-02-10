@@ -37,10 +37,12 @@ namespace AppDeslocamento.Data.Mapping
                 .HasColumnName("QuilometragemInicial");
 
             builder.Property(p => p.DataHoraFim)
+                .IsRequired(false)
                 .HasColumnName("DataHoraFim")
                 .HasColumnType("datetime");
 
             builder.Property(p => p.QuilometragemFinal)
+                .IsRequired(false)
                 .HasColumnName("QuilometragemFinal");
 
             builder.Property(p => p.Observacao)

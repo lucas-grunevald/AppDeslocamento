@@ -1,6 +1,7 @@
 using AppDeslocamento.Data.Context;
 using AppDeslocamento.Data.Repository;
 using AppDeslocamento.Domain.Interfaces;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -40,6 +41,9 @@ namespace AppDeslocamento.WebApi
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
 
+            builder.Services.AddMvc(setup => {
+                // Implementação de código MVC...
+            }).AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(appAssemblie));
 
             var app = builder.Build();
 

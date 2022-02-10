@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AppDeslocamento.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220206193224_CarregamentoInicial")]
+    [Migration("20220209235614_CarregamentoInicial")]
     partial class CarregamentoInicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -110,7 +110,7 @@ namespace AppDeslocamento.Data.Migrations
                     b.Property<long>("CondutorId")
                         .HasColumnType("bigint");
 
-                    b.Property<DateTime>("DataHoraFim")
+                    b.Property<DateTime?>("DataHoraFim")
                         .HasColumnType("datetime")
                         .HasColumnName("DataHoraFim");
 
@@ -123,7 +123,7 @@ namespace AppDeslocamento.Data.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("Observacao");
 
-                    b.Property<long>("QuilometragemFinal")
+                    b.Property<long?>("QuilometragemFinal")
                         .HasColumnType("bigint")
                         .HasColumnName("QuilometragemFinal");
 

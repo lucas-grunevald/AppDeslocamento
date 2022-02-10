@@ -8,17 +8,8 @@ namespace AppDeslocamento.Domain.Entities
 {
     public class Deslocamento : BaseEntity
     {
-        public Deslocamento(long carroId, long clienteId, long condutorId, DateTime dataHoraInicio, long quilometragemInicial, string observacao)
-        {
-            CarroId = carroId;
-            ClienteId = clienteId;
-            CondutorId = condutorId;
-            DataHoraInicio = dataHoraInicio;
-            QuilometragemInicial = quilometragemInicial;
-            Observacao = observacao;
-        }
 
-        private Deslocamento() { }
+        public Deslocamento() { }
 
         public long CarroId { get; private set; }
 
@@ -32,15 +23,36 @@ namespace AppDeslocamento.Domain.Entities
 
         public string Observacao { get; private set; }
 
-        public DateTime DataHoraFim { get; private set; }
+        public DateTime? DataHoraFim { get; private set; }
 
-        public long QuilometragemFinal { get; private set; }
+        public long? QuilometragemFinal { get; private set; }
 
         public Carro Carro { get; private set; }
 
         public Condutor Condutor { get; private set; }
 
         public Cliente Cliente { get; private set; }
+
+        public Deslocamento IniciarDeslocamento(long carroId, long clienteId, long condutorId, DateTime dataHoraInicio, long quilometragemInicial)
+        {
+            var deslocamento = new Deslocamento();
+
+            deslocamento.CarroId = carroId;
+            deslocamento.ClienteId = clienteId;
+            deslocamento.CondutorId = condutorId;
+            deslocamento.DataHoraInicio = dataHoraInicio;
+            deslocamento.QuilometragemInicial = quilometragemInicial;
+            deslocamento.Observacao = "";
+
+            return deslocamento;
+        }
+
+        public void FinalizarDeslocamento( string observacao, long quilometragemFinal)
+        {            
+            DataHoraFim = DateTime.Now;
+            Observacao = observacao;
+            QuilometragemFinal = quilometragemFinal;
+        }
 
     }
 }

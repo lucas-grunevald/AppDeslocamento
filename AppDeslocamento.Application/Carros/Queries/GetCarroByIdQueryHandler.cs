@@ -30,8 +30,7 @@ namespace AppDeslocamento.Application.Carros.Queries
         {
             var repository = _unitOfWork.GetRepository<Carro>();
 
-            var carro = await repository
-                .GetByIdAsync(request.carroId);
+            var carro = await repository.GetByIdAsync(request.carroId);
 
             return carro;
         }
